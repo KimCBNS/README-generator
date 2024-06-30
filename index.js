@@ -1,19 +1,18 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs').promises;
 const path = require('path');
 
-// import the generateMarkdown module exported from generateMarkdown.js
+// Imports the generateMarkdown module exported from generateMarkdown.js
 const generateMarkdown = require('./utils/generateMarkdown')
 
-// Define the directory and file paths
+// Defines the directory and file paths
 const directoryPath = path.join(__dirname, 'dist');
 const filePath = path.join(directoryPath, 'README.md');
 
 
-// TODO: Create an array of questions for user input
+// Creates an array of questions for user input - each question has an identifier eg: title
 const questions = [
-  // make a bunch of these one is not an input (type list - licensing included make sure choice of none is included)
   {
     type: 'input',
     name: 'title',
@@ -34,7 +33,7 @@ const questions = [
     name: 'usage',
     message: 'Provide usage information: '
   },
-  {
+  { // uses a list to give the user a choice
     type: 'list',
     name: 'license',
     message: 'Select your application license:',
@@ -43,8 +42,6 @@ const questions = [
       'GNU GPLv3',
       'Apache 2.0',
       'BSD 3-Clause',
-      'ISC',
-      'Unlicense',
       'None'
     ]
   },
@@ -70,13 +67,8 @@ const questions = [
   }
 ];
 
-// TODO: Create a function to write README file
+// This is a function to write README file
 function writeToFile(NewData) { 
-// fs write file (be sure to include the file path dist/readme.md)
-// create the folder first
-// // Define the directory and file paths
-// const directoryPath = path.join(__dirname, 'dist');
-// const filePath = path.join(directoryPath, 'README.md');
 // Create the directory (first check to see if it exists) and then write the file using promises
 
 const doesDirectoryExist = (directory) => {
@@ -92,7 +84,7 @@ const doesDirectoryExist = (directory) => {
     });
 };
 
-// Ensure the directory exists and then write the file
+// Ensure the directory exists (run the check function) and then write the file
 doesDirectoryExist(directoryPath)
   .then(() => {
     const readmeContent = NewData;
@@ -104,36 +96,20 @@ doesDirectoryExist(directoryPath)
   .catch(err => {
     console.error(`Error: ${err.message}`);
   });
-
-
-
 };
 
-
-
-
-
-
-
-
-
-
-// TODO: Create a function to initialize app
+// Initialize the app
 function init() {
+  // runs the prompt to go through the questions and store the answers in a data object
   inquirer
-    .prompt(questions) // this runs through the questions and saves as data object
+    .prompt(questions) 
     .then((data) => {
-      // this is the tester to create a file for the data but we need to do
-      // an inbetween step to convert to markdown
-
+      // this takes the data and uses it to generate markdown data
       const NewData = generateMarkdown(data);
-      //console.log(NewData);
+      // this takes the markdown data and calls the function to create it as a file
       writeToFile(NewData);
     });
-
-
 }
-
 
 init();
 
