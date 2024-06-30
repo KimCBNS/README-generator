@@ -36,5 +36,5 @@ For questions about the project, please reach out via GitHub or email:
 - Email: desveaux.kim@gmail.com
 
 ## Walkthrough Video
-Watch this [screencast](link-to-your-walkthrough-video) demonstrating the functionality of the application.
+Watch this Screencast: https://drive.google.com/file/d/14i8p6Ynend1_Zf9SSLIq7pe96EupcIHu/view demonstrating the functionality of the application.
 
