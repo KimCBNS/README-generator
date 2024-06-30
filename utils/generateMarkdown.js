@@ -2,7 +2,7 @@
 // If there is no license, return an empty string FOR NONE
 function renderLicenseBadge(license) {}
  // hint: if license!=none
- // hint : return link to make a badge
+ // hint : return link to make a badge{renderLicenseLink(data.license)}
  // hint: return ` ![Github license](https://img.shields.io/badge/license-${license.replace( / /g, "%20")}-blue.svg)`;
 
 // TODO: Create a function that returns the license link
@@ -19,17 +19,48 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  console.log("generate function ran");
-//   return `# ${data.title}
-  
-//   // hints:  on temperal literals you can inject js at will if it is in ${}
-// ${renderLicenseLink(data.license)}
+  return `
+# ${data.title}
+## Table of Contents
 
-// `;
-}
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)"
 
-function tests(){
-  console.log("test");
-}
+## Introduction
+${data.description}
+
+## Installation
+${data.installation}
+
+## Usage
+${data.usage}
+
+## License
+This project is licensed under the ${data.license} License - see the [LICENSE](LICENSE) file for details.
+
+## Tests
+${data.tests}
+
+## Contributing
+${data.contributors}
+
+## Acknowledgements
+Credits to people and resources.
+
+## Contact
+To check out ${data.github}'s pages: https://github.com/${data.github}
+To get in touch to comment and make suggestions: reach out to: ${data.email}
+
+`
+};
+
 
 module.exports = generateMarkdown;
+
+// bonus add a date field in the application
+// bonus add the author's name in the listing
