@@ -1,1 +1,37 @@
-"\n# cool app\n## Table of Contents\n\n- [Introduction](#introduction)\n- [Installation](#installation)\n- [Usage](#usage)\n- [License](#license)\n- [Contributing](#contributing)\n- [Acknowledgements](#acknowledgements)\n- [Contact](#contact)\"\n\n## Introduction\nlkjlk\n\n## Installation\nl;kj;lkj\n\n## Usage\nlkjllj\n\n## License\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n## Tests\nlkj;lkj\n\n## Contributing\nlkjlkj\n\n## Acknowledgements\nCredits to people and resources.\n\n## Contact\nHow to reach the project maintainers.\nlkjlkj\n"
+
+# kim's project
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)"
+
+## Introduction
+it is a cool project
+
+## Installation
+install using npm 
+
+## Usage
+use wisely
+
+## License
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+
+## Tests
+test using the following:
+
+## Contributing
+yes, my friend joe
+
+## Acknowledgements
+Credits to people and resources.
+
+## Contact
+To check out kimcbns's pages: https://github.com/kimcbns
+To get in touch to comment and make suggestions: reach out to: desveaux.kim@gmail.com
+

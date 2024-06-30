@@ -1,19 +1,14 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs').promises;
-
-// the new file will need to be stored in a directory so it doesn't
-
-
-const directoryPath = './myDirectory';
-console.log(directoryPath);
-// Use fs.promises.mkdir() to create the directory asynchronously
-// fs.promises.mkdir(directoryPath)
-//   .then(() => console.log(`Directory '${directoryPath}' created.`))
-//   .catch(err => console.error(`Error creating directory: ${err.message}`));
+const path = require('path');
 
 // import the generateMarkdown module exported from generateMarkdown.js
 const generateMarkdown = require('./utils/generateMarkdown')
+
+// Define the directory and file paths
+const directoryPath = path.join(__dirname, 'dist');
+const filePath = path.join(directoryPath, 'README.md');
 
 
 // TODO: Create an array of questions for user input
@@ -76,9 +71,51 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(NewData) { 
 // fs write file (be sure to include the file path dist/readme.md)
 // create the folder first
+// // Define the directory and file paths
+// const directoryPath = path.join(__dirname, 'dist');
+// const filePath = path.join(directoryPath, 'README.md');
+// Create the directory (first check to see if it exists) and then write the file using promises
+
+const doesDirectoryExist = (directory) => {
+  return fs.access(directory)
+    .then(() => {
+      console.log(`Directory '${directory}' already exists.`);
+    })
+    .catch(() => {
+      return fs.mkdir(directory, { recursive: true })
+        .then(() => {
+          console.log(`Directory '${directory}' created.`);
+        });
+    });
+};
+
+// Ensure the directory exists and then write the file
+doesDirectoryExist(directoryPath)
+  .then(() => {
+    const readmeContent = NewData;
+    return fs.writeFile(filePath, readmeContent);
+  })
+  .then(() => {
+    console.log(`README.md has been generated in ${directoryPath}`);
+  })
+  .catch(err => {
+    console.error(`Error: ${err.message}`);
+  });
+
+
+
+};
+
+
+
+
+
+
+
+
 
 
 // TODO: Create a function to initialize app
@@ -88,13 +125,10 @@ function init() {
     .then((data) => {
       // this is the tester to create a file for the data but we need to do
       // an inbetween step to convert to markdown
-      const filename = '.\dist\README.md';
+
       const NewData = generateMarkdown(data);
-      //`${data.title.toLowerCase().split(' ').join('')}.json`;
-      console.log(NewData);
-      fs.writeFile(filename, JSON.stringify(NewData, null, '\t'), (err) =>
-        err ? console.log(err) : console.log('Success!')
-      );
+      //console.log(NewData);
+      writeToFile(NewData);
     });
 
 
